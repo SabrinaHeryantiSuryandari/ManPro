@@ -63,9 +63,9 @@
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                         data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item active" href="tambah">Tersertifikasi</a>
-                            <a class="collapse-item active" href="create">Belum Tersertifikasi</a>
+                        <div class="bg-gray-300 py-2 collapse-inner rounded">
+                            <a class="collapse-item active text-gray-800" href="tambah">Tambah Data Tanah</a>
+                            <a class="collapse-item active text-gray-800" href="create">Tambah Data Pemilik</a>
                         </div>
                     </div>
                 </li>
@@ -78,9 +78,9 @@
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo"
                         data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item active" href="pemilik">Tersertifikasi</a>
-                            <a class="collapse-item active" href="asets">Belum Tersertifikasi</a>
+                        <div class="bg-gray-300 py-2 collapse-inner rounded">
+                            <a class="collapse-item active text-gray-800" href="pemilik">Tabel Tanah</a>
+                            <a class="collapse-item active text-gray-800" href="asets">Tabel Pemilik</a>
                         </div>
                     </div>
                 </li>
@@ -198,10 +198,10 @@
                 <!-- Footer -->
                 {{-- <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow"> --}}
 
-                    <footer class="sticky-footer" style="background-color: #2F8F9D;">
+                    <footer class="sticky-footer" style="background-color: #c8c8c8;">
                         <div class="container my-auto">
                             <div class="copyright text-center my-auto">
-                                <span class="text-white">Dinas Pekerjaan Umum Sumber Daya Air</span>
+                                <span class="text-white">PERUMAHAN D’GARDEN CITY MOJOKERTO</span>
                             </div>
                         </div>
                     </footer>
