@@ -38,7 +38,7 @@
 
 <body>
     {{-- background="{{ asset('template/')}} --}}
-    <img src="{{ asset('img/bg.jpg') }}" id="bg" alt="">
+    <img src="{{ asset('img/bg.png') }}" id="bg" alt="">
 
     <div class="card-img-overlay text-center d-flex flex-column h-100">
         <div class="my-auto">
