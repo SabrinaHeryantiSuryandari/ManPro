@@ -112,7 +112,7 @@
 </head>
 
 <body>
-    <img src="{{ asset('img/login.jpeg') }}" id="bg" alt="">
+    <img src="{{ asset('img/login.png') }}" id="bg" alt="">
 
     <div class="container col-lg-6">
 
