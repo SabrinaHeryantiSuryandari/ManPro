@@ -23,81 +23,72 @@
 
     <div class="card shadow mb-3 ">
         <div class="card-header py-2 " style="background-color: #C8C8C8;">
-            <h6 class="m-0 font-weight-bold text-white text-center">Masukkan Data Pemilik</h6>
+            <h6 class="m-0 font-weight-bold text-white text-center">Masukkan Data Aset Tanah</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="" style="margin:20px auto;" id="dataTable" width="100%" cellspacing="0">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group row">
-                            <label for="tanah_id" class="col-sm-2 col-form-label">Id Tanah</label>
+                            <label for="jenis_klaster" class="col-sm-2 col-form-label">Jenis Cluster</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="tanah_id" name="tanah_id" placeholder="Masukkan ID Tanah">
+                                <input type="text" class="form-control" id="jenis_klaster" name="jenis_klaster" placeholder="Masukkan ID Tanah">
                             </div>
-                            <small class="text-danger">{{ $errors->first('tanah_id') }}</small>
+                            <small class="text-danger">{{ $errors->first('jenis_klaster') }}</small>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group row">
-                            <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                            <label for="lebar" class="col-sm-2 col-form-label">Lebar</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
+                                <input type="text" class="form-control" id="lebar" name="lebar" placeholder="Masukkan Lebar (Cm)">
                             </div>
-                            <small class="text-danger">{{ $errors->first('nama') }}</small>
+                            <small class="text-danger">{{ $errors->first('lebar') }}</small>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group row">
-                            <label for="no_ktp" class="col-sm-2 col-form-label">Nomor KTP</label>
+                            <label for="panjang" class="col-sm-2 col-form-label">Panjang</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="no_ktp" name="no_ktp" placeholder="Masukkan Nomor KTP">
+                                <input type="text" class="form-control" id="panjang" name="panjang" placeholder="Masukkan Panjang (Cm)">
                             </div>
-                            <small class="text-danger">{{ $errors->first('no_ktp') }}</small>
+                            <small class="text-danger">{{ $errors->first('panjang') }}</small>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group row">
-                            <label for="tempat_lahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
+                            <label for="luas" class="col-sm-2 col-form-label">Luas</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir">
+                                <input type="text" class="form-control" id="luas" name="luas" placeholder="Masukkan Luas (m2)">
                             </div>
-                            <small class="text-danger">{{ $errors->first('tempat_lahir') }}</small>
+                            <small class="text-danger">{{ $errors->first('luas') }}</small>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group row">
-                            <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+                            <label for="blok" class="col-sm-2 col-form-label">Blok</label>
                             <div class="col-sm-10">
-                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="dd/mm/yy">
+                                <input type="text" class="form-control" id="blok" name="blok" placeholder="Masukkan Blok">
                             </div>
-                            <small class="text-danger">{{ $errors->first('tanggal_lahir') }}</small>
+                            <small class="text-danger">{{ $errors->first('blok') }}</small>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group row">
-                            <label for="pekerjaan" class="col-sm-2 col-form-label">Pekerjaan</label>
+                            <label for="no_rumah" class="col-sm-2 col-form-label">Nomor Rumah</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="no_rumah" name="no_rumah" placeholder="Masukkan Nomor Rumah">
+                            </div>
+                            <small class="text-danger">{{ $errors->first('no_rumah') }}</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group row">
+                            <label for="pekerjaan" class="col-sm-2 col-form-label">Harga Unit</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" placeholder="Masukkan Pekerjaan">
                             </div>
                             <small class="text-danger">{{ $errors->first('pekerjaan') }}</small>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group row">
-                            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">
-                            </div>
-                            <small class="text-danger">{{ $errors->first('alamat') }}</small>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group row">
-                            <label for="no_tlp" class="col-sm-2 col-form-label">Nomor Telepon</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="no_tlp" name="no_tlp" placeholder="Masukkan Nomor telepon">
-                            </div>
-                            <small class="text-danger">{{ $errors->first('no_tlp') }}</small>
                         </div>
                     </div>
 

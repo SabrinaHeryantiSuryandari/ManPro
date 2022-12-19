@@ -36,10 +36,10 @@ Route::get('/verified-create', function () {
 
 //tambah data
 // route untuk input data yg belum terverifikasi
-Route::get('/create', function () {
-    return view('admin.create');
+Route::get('/tanah', function () {
+    return view('admin.tanah');
 });
-Route::get('/tambah', function () {
+Route::get('/pemilik', function () {
     return view('admin.pemilik');
 });
 // Route::get('/editpemilik', function () {
@@ -55,17 +55,17 @@ Auth::routes(['verify' => false]);
 // Auth::routes(['verify' => true]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/admin',[view::class, 'index']);
-Route::get('/masuk',[view::class, 'login']);
-Route::post('/save',[view::class, 'save']);
+Route::get('/admin', [view::class, 'index']);
+Route::get('/masuk', [view::class, 'login']);
+Route::post('/save', [view::class, 'save']);
 // Route::delete('/admin/{id}',[view::class, 'delete']);
 // Route::delete('/admin/{id}', 'view@destroy')->name('admin.destroy');
 // Route::get('admin/hapus/{id}', 'view@hapus');
 Route::get('admin/hapus/{id}', [view::class, 'hapus']);
 
-Route::get('/guest',[GuestController::class, 'index'])->name('guest');
+Route::get('/guest', [GuestController::class, 'index'])->name('guest');
 
-Route::get('/pengguna',[view::class, 'pengguna'])->name('pengguna');
+Route::get('/pengguna', [view::class, 'pengguna'])->name('pengguna');
 // Route::dele('/delete',[view::class, 'destroy']);
 // Route::delete('/pengguna/{id}', 'view@destroy')->name('pengguna.destroy');
 
