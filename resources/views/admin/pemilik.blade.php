@@ -32,7 +32,12 @@
                         <div class="form-group row">
                             <label for="tanah_id" class="col-sm-2 col-form-label">Id Tanah</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="tanah_id" name="tanah_id" placeholder="Masukkan ID Tanah">
+                                <select class="form-control" name="tanah_id">
+                                    <option> Pilih Kepemilikan </option>
+                                    @foreach ($tanah as $item)
+                                    <option value="{{$item->id}}">{{ $item->jenis_klaster }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <small class="text-danger">{{ $errors->first('tanah_id') }}</small>
                         </div>

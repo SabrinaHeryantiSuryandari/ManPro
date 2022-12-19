@@ -6,6 +6,7 @@ use App\Http\Controllers\AsetController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PemilikController;
+use App\Http\Controllers\TanahController;
 use Illuminate\Contracts\View\View as ViewView;
 use Illuminate\Support\Facades\Auth;
 
@@ -75,6 +76,7 @@ Route::resource('/asets', AsetController::class);
 Route::resource('/delete', view::class);
 
 Route::resource('/pemilik', PemilikController::class);
+Route::resource('/tanah', TanahController::class);
 // Route::resource('/pengguna', View::class);
 // Route::resource('/save', App\Http\Controllers\view::class,'save');
 

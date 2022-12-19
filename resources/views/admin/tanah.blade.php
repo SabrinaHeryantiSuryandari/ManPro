@@ -18,7 +18,7 @@
 </div>
 @endif
 
-<form action="{{ route('pemilik.store') }}" method="POST">
+<form action="{{ route('tanah.store') }}" method="POST">
     @csrf
 
     <div class="card shadow mb-3 ">
@@ -84,11 +84,11 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group row">
-                            <label for="pekerjaan" class="col-sm-2 col-form-label">Harga Unit</label>
+                            <label for="harga" class="col-sm-2 col-form-label">Harga Unit</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" placeholder="Masukkan Pekerjaan">
+                                <input type="text" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga">
                             </div>
-                            <small class="text-danger">{{ $errors->first('pekerjaan') }}</small>
+                            <small class="text-danger">{{ $errors->first('harga') }}</small>
                         </div>
                     </div>
 

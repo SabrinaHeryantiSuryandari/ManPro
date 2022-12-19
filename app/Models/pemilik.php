@@ -25,8 +25,8 @@ class pemilik extends Model
     protected $primarykay = "id";
 
 
-    public function pemilik()
+    public function tanah()
     {
-        return $this->hasOne(pemilik::class);
+        return $this->belongsTo(tanah::class);
     }
 }
