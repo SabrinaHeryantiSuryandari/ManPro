@@ -1,205 +1,121 @@
 @extends('layouts/index')
 @section('content')
-    @section('judul')
-        {{'Input Data / Tersertifikasi '}}
-    @endsection
-    @section('title')
-        {{'Input Data yang Tersertifikasi '}}
-    @endsection
+@section('judul')
+{{'Input Data / Tersertifikasi '}}
+@endsection
+@section('title')
+{{'Input Data yang Tersertifikasi '}}
+@endsection
 
 @if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="alert alert-danger">
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 
-<form action="{{ route('pemilik.store') }}" method="POST" >
+<form action="{{ route('pemilik.store') }}" method="POST">
     @csrf
 
-        <div class="card shadow mb-3 ">
-            <div class="card-header py-2 "style="background-color: #40B9CB;">
-                <h6 class="m-0 font-weight-bold text-white text-center">Masukkan Data Aset Terferifikasi</h6>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive" >
-                    <table class="" style="margin:20px auto;" id="dataTable" width="100%" cellspacing="0">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <tr>
-                                    <td>Status Aset</td>
-                                    <td>
-                                        <select name="status_aset" value="{{ old('status_aset') }}">
-                                            <option value="">----Pilih Status Aset----</option>
-                                            <option value="Tersertifikasi" selected>Tersertifikasi</option>
-                                            <option value="Belum Tersertifikasi" >Belum Tersertifikasi</option>
-                                        </select>
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('status_aset') }}</small>
-                                    </td>
-                                    
-                                    <td>Asal Usul Aset</td>
-                                    <td>
-                                        <select name="asalusul_aset" value="{{ old('asalusul_aset') }}">
-                                            <option value="" selected>----Pilih Asal Usul Aset----</option>
-                                            <option value="Pembelian">Pembelian</option>
-                                            <option value="Hibah">Hibah</option>
-                                        </select>
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('asalusul_aset') }}</small>
-                                    </td>
-                                </tr> 
+    <div class="card shadow mb-3 ">
+        <div class="card-header py-2 " style="background-color: #C8C8C8;">
+            <h6 class="m-0 font-weight-bold text-white text-center">Masukkan Data Aset Terferifikasi</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="" style="margin:20px auto;" id="dataTable" width="100%" cellspacing="0">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group row">
+                            <label for="tanah_id" class="col-sm-2 col-form-label">Id Tanah</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="tanah_id" name="tanah_id" placeholder="Masukkan ID Tanah">
                             </div>
+                            <small class="text-danger">{{ $errors->first('tanah_id') }}</small>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <tr>
-                                    <td>No Sertifikat</td>
-                                    <td>
-                                        <input type="text" name="no_sertifikat" value="{{ old('no_sertifikat') }}" placeholder="No Sertifikat">
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('no_sertifikat') }}</small>
-                                    </td>
-                                    
-                                    <td>Kondisi Aset</td>
-                                    <td>
-                                        <select name="kondisi_aset" value="{{ old('kondisi_aset') }}">
-                                            <option value="" selected>-----Pilih Kondisi Aset-----</option>
-                                            <option value="Layak">Layak</option>
-                                            <option value="Tidak Layak">Tidak Layak</option>
-                                            <option value="Tidak Layak">Tidak ada bangunan</option>
-                                        </select>
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('kondisi_aset') }}</small>
-                                    </td>
-                                </tr> 
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group row">
+                            <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
                             </div>
+                            <small class="text-danger">{{ $errors->first('nama') }}</small>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <tr>
-                                    <td>Nama Aset</td>
-                                    <td>
-                                        <input id="text" name="nama_aset" value="{{ old('nama_aset') }}" placeholder="Nama Aset">
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('nama_aset') }}</small>
-                                    </td> 
-                                    
-                                    <td>Kondisi Geografis</td>
-                                    <td>
-                                        <select name="kondisi_geografis" value="{{ old('kondisi_geografis') }}">
-                                            <option value="" selected>--Pilih Kondisi Geografis--</option>
-                                            <option value="Dataran Tinggi">Dataran Tinggi</option>
-                                            <option value="Dataran Rendah">Dataran Rendah</option>
-                                            <option value="Daerah Perairan">Daerah Perairan</option>
-                                        </select>
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('kondisi_geografis') }}</small>
-                                    </td>
-                                </tr> 
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group row">
+                            <label for="no_ktp" class="col-sm-2 col-form-label">Nomor KTP</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="no_ktp" name="no_ktp" placeholder="Masukkan Nomor KTP">
                             </div>
+                            <small class="text-danger">{{ $errors->first('no_ktp') }}</small>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <tr>
-                                    <td>Alamat</td>
-                                    <td>
-                                        <input id="w3review" name="alamat_aset" value="{{ old('alamat_aset') }}" placeholder="Alamat">
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('alamat_aset') }}</small>
-                                    </td>
-                                    
-                                    <td>Tahun Rehabilitasi</td>
-                                    <td>
-                                        <input type="date" id="text" name="th_rehab" value="{{ old('th_rehab') }}" placeholder="Tahun Rehabilitasi">
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('th_rehab') }}</small>
-                                    </td>
-                                    
-                                </tr> 
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group row">
+                            <label for="tempat_lahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir">
                             </div>
+                            <small class="text-danger">{{ $errors->first('tempat_lahir') }}</small>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <tr>
-                                    <td>Luas Aset</td>
-                                    <td>
-                                        <input id="text" name="luas_aset" value="{{ old('luas_aset') }}" placeholder="Luas Aset">
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('luas_aset') }}</small>
-                                    </td>
-                                    
-                                    <td>Tahun Kepemilikan</td>
-                                    <td>
-                                        <input type="date" id="text" name="th_kepemilikan" value="{{ old('th_kepemilikan') }}">
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('th_kepemilikan') }}</small>
-                                    </td>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group row">
+                            <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="dd/mm/yy">
+                            </div>
+                            <small class="text-danger">{{ $errors->first('tanggal_lahir') }}</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group row">
+                            <label for="pekerjaan" class="col-sm-2 col-form-label">Pekerjaan</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" placeholder="Masukkan Pekerjaan">
+                            </div>
+                            <small class="text-danger">{{ $errors->first('pekerjaan') }}</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group row">
+                            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">
+                            </div>
+                            <small class="text-danger">{{ $errors->first('alamat') }}</small>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group row">
+                            <label for="no_tlp" class="col-sm-2 col-form-label">Nomor Telepon</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="no_tlp" name="no_tlp" placeholder="Masukkan Nomor telepon">
+                            </div>
+                            <small class="text-danger">{{ $errors->first('no_tlp') }}</small>
+                        </div>
+                    </div>
 
-                                </tr> 
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <tr>
-                                    <td>Keterangan Aset</td>
-                                    <td>
-                                        <input id="text" name="keterangan_aset" value="{{ old('keterangan_aset') }}" placeholder="Keterangan">
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('keterangan_aset') }}</small>
-                                    </td>
-                                    
-                                    <td>Tahun Pembangunan</td>
-                                    <td>
-                                        <input type="date" id="text" name="th_pembangunan" value="{{ old('th_pembangunan') }}">
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('th_pembangunan') }}</small>
-                                    </td>
-                                </tr> 
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <tr>
-                                    <td>Nama Pemilik</td>
-                                    <td>
-                                        <input id="text" name="nama" value="{{ old('nama') }}" placeholder="nama">
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('nama') }}</small>
-                                    </td>
-                                    
-                                    <td>Keterangan Pemilik</td>
-                                    <td>
-                                        <select name="keterangan" value="{{ old('keterangan') }}">
-                                            <option value="" selected>--Pilih keterangan Pemilik--</option>
-                                            <option value="Instansi">Instansi</option>
-                                            <option value="Non Instansi">Non Instansi</option>
-                                        </select>
-                                        <br>
-                                        <small class="text-danger">{{ $errors->first('keterangan') }}</small>
-                                    </td>
-                                </tr> 
-                            </div>
-                        </div> 
-                    </table>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
-                        <div class="form-group text-center">
-                            <tr>
-                                <td>
-                                    <br>
-                                    <button type="submit" class="btn btn-success text-center">Submit</button>
-                                </td>
-                            </tr>
-                        </div>
+                </table>
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
+                    <div class="form-group text-center">
+                        <tr>
+                            <td>
+                                <br>
+                                <button type="submit" class="btn btn-success text-center">Submit</button>
+                            </td>
+                        </tr>
                     </div>
                 </div>
             </div>
         </div>
-    
+    </div>
+
 </form>
 
 @endsection

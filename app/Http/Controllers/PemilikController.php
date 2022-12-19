@@ -2,61 +2,116 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\aset;
-use App\Models\Pemilik;
-use App\Models\pemilik as ModelsPemilik;
+use App\Models\pemilik;
+use App\Models\tanah;
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\AsetController;
+
 
 class PemilikController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-    	// mengambil semua data pengguna
-    	// $pemilik = Pemilik::all();
-        $asets = Aset::all();
+        $tanah = Tanah::all();
         $pemilik = Pemilik::all();
-        // $pemilik = Pemilik::with('aset')->paginate(2);
-    	// return data ke view
-    	return view('admin.tersertifikasi', compact('pemilik')
+
+        return view(
+            'admin.pemilik',
+            // 'admin.input_pengadaan',
+            ['tanah' => $tanah],
+            ['pemilik' => $pemilik]
         );
     }
 
-    public function create(){
-        $asets = aset::all();
-        // $pemilik = Pemilik::all();
-        // return view('pemilik', compact('asets', 'pemilik'));
-        return view('pemilik', compact('asets'));
-        
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+        return view('admin.pemilik');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $asets = Aset::create($request->except(['nama', 'keterangan']));
+        $request->validate([
+            // 'id' => 'required',
+            'tanah_id' => 'required',
+            'nama' => 'required',
+            'no_ktp' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+            'no_tlp' => 'required',
+        ]);
 
-        $request['aset_id'] = $asets->id;
-        $pemilik = Pemilik::create($request->only(['aset_id', 'nama', 'keterangan']));
+        Pemilik::create($request->post());
 
-        return back()->with('success',' Post baru berhasil dibuat.');
+        return redirect()->route('pemilik.index')
+            ->with('success', 'Data Pemilik Berhasil Ditambahkan');
     }
-    
-    public function show(Pemilik $pemilik)
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        return view('admin.lihat',compact('pemilik'));
+        return view('pemilik.index', compact('pemilik'));
     }
 
-    public function edit(Pemilik $pemilik)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        return view('admin.edit',compact('pemilik'));
+        return view('admin.pemilik', compact('pemilik'));
     }
 
-    public function destroy(Pemilik $pemilik)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $pemilik = Pemilik::find($id)->update($request->all());
+
+        return back()->with('success', ' Data telah diperbaharui!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(pemilik $pemilik)
     {
         $pemilik->delete();
-       
+
         return redirect()->route('pemilik.index')
-                        ->with('success','Aset Berhasil Dihapus!');
-    
+            ->with('success', 'Pemilik Berhasil Dihapus!');
     }
 }

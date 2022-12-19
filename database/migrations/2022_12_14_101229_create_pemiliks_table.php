@@ -18,8 +18,9 @@ return new class extends Migration
             $table->foreignId('tanah_id')->constrained();
             $table->string('nama');
             $table->bigInteger('no_ktp');
-            $table->string('ttl');
-            $table->string('pekerjaan');
+            $table->text('tempat_lahir');
+            $table->date('tanggal_lahir');
+            $table->text('pekerjaan');
             $table->string('alamat');
             $table->string('no_tlp');
             $table->timestamps();
